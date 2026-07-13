@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 const api = axios.create({
-  baseURL: `${import.meta.env.BACKEND_URL}/api`,
+  baseURL: backendUrl ? `${backendUrl.replace(/\/$/, "")}/api` : "/api",
 });
 
 api.interceptors.request.use((config) => {
