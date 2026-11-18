@@ -26,7 +26,10 @@ export default function Register() {
       else if (user.role === 'doctor') navigate('/doctor/dashboard');
       else navigate('/doctors');
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed');
+      setError(
+        err.response?.data?.message ||
+          'Could not reach the server. Check that the backend is running and MongoDB is connected.'
+      );
     } finally {
       setLoading(false);
     }
